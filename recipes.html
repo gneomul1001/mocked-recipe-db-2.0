@@ -121,6 +121,10 @@
         ];
         let recipes = JSON.parse(localStorage.getItem('mock_recipes')) || [];
 
+        // 초기 로드시 '불고기', '배추김치' 데이터 제거 정산 수행
+        recipes = recipes.filter(r => r.name !== '불고기' && r.name !== '배추김치');
+        saveToStorage();
+
         function saveToStorage() {
             localStorage.setItem('mock_categories', JSON.stringify(categories));
             localStorage.setItem('mock_recipes', JSON.stringify(recipes));
